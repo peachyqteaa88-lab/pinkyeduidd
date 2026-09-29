@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>PinkyEdu 🎀 - Alat Tulis & Jasa Akademik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & BASE ============ */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --pink:#FFB6D5;
+  --pink-soft:#FFE1EF;
+  --pink-light:#FFF0F7;
+  --pink-deep:#FF8FC0;
+  --pink-dark:#E86BA5;
+  --cream:#FFF8F0;
+  --soft-blue:#C8E6F5;
+  --soft-blue-2:#E3F2FB;
+  --text:#4A3C47;
+  --text-light:#8A7B85;
+  --white:#FFFFFF;
+  --shadow:0 4px 20px rgba(255,182,213,0.25);
+  --shadow-lg:0 8px 32px rgba(255,143,192,0.3);
+  --radius:18px;
+  --radius-sm:12px;
+  --success:#7ED9A0;
+  --warning:#FFC069;
+  --danger:#FF8B8B;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Quicksand','Poppins',sans-serif;
+  background:linear-gradient(135deg,#FFF8FB 0%,#FFF0F7 50%,#F5F9FF 100%);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  padding-bottom:80px;
+  font-size:15px;
+  line-height:1.6;
+}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;outline:none;background:none}
+input,select,textarea{font-family:inherit;font-size:15px;outline:none}
+a{text-decoration:none;color:inherit}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--pink-light)}
+::-webkit-scrollbar-thumb{background:var(--pink);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--pink-deep)}
+
+/* ============ TOP NAVBAR (Desktop) ============ */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--pink-soft);
+  padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 12px rgba(255,182,213,0.15);
+}
+.logo{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;font-size:22px;
+  background:linear-gradient(135deg,var(--pink-deep),var(--pink-dark));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  display:flex;align-items:center;gap:6px;
+  cursor:pointer;
+}
+.logo .emoji{-webkit-text-fill-color:initial}
+.nav-desktop{display:none;gap:6px;align-items:center}
+.nav-desktop button{
+  padding:9px 16px;border-radius:30px;
+  font-weight:600;font-size:14px;color:var(--text-light);
+  transition:all .25s ease;position:relative;
+}
+.nav-desktop button:hover{background:var(--pink-light);color:var(--pink-dark);transform:translateY(-1px)}
+.nav-desktop button.active{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;box-shadow:0 4px 12px rgba(255,143,192,0.4)}
+.topbar-actions{display:flex;align-items:center;gap:10px}
+.icon-btn{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--pink-light);color:var(--pink-dark);
+  font-size:18px;position:relative;transition:all .25s;
+}
+.icon-btn:hover{background:var(--pink);color:#fff;transform:scale(1.08)}
+.badge{
+  position:absolute;top:-4px;right:-4px;
+  background:linear-gradient(135deg,#FF6BA8,#E84A8A);color:#fff;
+  font-size:11px;font-weight:700;
+  min-width:20px;height:20px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  padding:0 5px;border:2px solid #fff;
+  animation:pop .3s ease;
+}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.3)}100%{transform:scale(1)}}
+
+/* ============ MAIN CONTAINER ============ */
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+
+/* ============ PAGES ============ */
+.page{display:none;animation:fadeIn .4s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============ BACK BUTTON ============ */
+.back-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:30px;
+  background:#fff;color:var(--pink-dark);
+  font-weight:600;font-size:14px;
+  box-shadow:var(--shadow);margin:16px 0;
+  transition:all .25s;
+}
+.back-btn:hover{background:var(--pink-light);transform:translateX(-3px)}
+
+/* ============ HERO / BANNER ============ */
+.hero{
+  background:linear-gradient(135deg,var(--pink-light) 0%,#FFE9F3 40%,var(--soft-blue-2) 100%);
+  border-radius:24px;padding:28px 22px;margin:16px 0;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.hero::before{
+  content:'';position:absolute;top:-50px;right:-50px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,182,213,0.5),transparent 70%);
+}
+.hero::after{
+  content:'';position:absolute;bottom:-40px;left:-30px;
+  width:140px;height:140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,230,245,0.6),transparent 70%);
+}
+.hero-content{position:relative;z-index:2}
+.hero h1{
+  font-family:'Poppins',sans-serif;
+  font-size:26px;font-weight:700;
+  color:var(--pink-dark);margin-bottom:8px;line-height:1.3;
+}
+.hero .quote{
+  font-size:14px;color:var(--text-light);
+  font-style:italic;margin-bottom:16px;
+  display:flex;align-items:center;gap:6px;
+}
+.hero .quote::before{content:'🌸'}
+.hero-illustration{
+  font-size:70px;text-align:center;margin:12px 0;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 28px;border-radius:30px;
+  background:linear-gradient(135deg,var(--pink-deep),var(--pink-dark));
+  color:#fff;font-weight:700;font-size:15px;
+  box-shadow:0 6px 20px rgba(255,143,192,0.4);
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,143,192,0.55)}
+.btn-primary:active{transform:translateY(0) scale(0.98)}
+.btn-secondary{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 22px;border-radius:30px;
+  background:#fff;color:var(--pink-dark);
+  font-weight:600;font-size:14px;
+  border:2px solid var(--pink-soft);
+  transition:all .25s;
+}
+.btn-secondary:hover{background:var(--pink-light);border-color:var(--pink);transform:translateY(-2px)}
+.btn-danger{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 22px;border-radius:30px;
+  background:#FFE8E8;color:#D64545;
+  font-weight:600;font-size:14px;
+  transition:all .25s;
+}
+.btn-danger:hover{background:#FFD6D6}
+.btn-wa{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 24px;border-radius:30px;
+  background:linear-gradient(135deg,#5BD46B,#25D366);
+  color:#fff;font-weight:700;font-size:15px;
+  box-shadow:0 6px 20px rgba(37,211,102,0.35);
+  transition:all .25s;width:100%;
+}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.5)}
+
+/* ============ INFO CARDS ============ */
+.info-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;margin:20px 0;
+}
+.info-card{
+  background:#fff;border-radius:var(--radius-sm);
+  padding:16px;box-shadow:var(--shadow);
+  border:1.5px solid var(--pink-soft);
+  transition:all .3s;
+}
+.info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.info-card .ic-icon{font-size:24px;margin-bottom:6px}
+.info-card p{font-size:13px;color:var(--text-light);line-height:1.5}
+
+/* ============ SECTION TITLE ============ */
+.section-title{
+  font-family:'Poppins',sans-serif;
+  font-size:20px;font-weight:700;
+  color:var(--pink-dark);margin:24px 0 14px;
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ============ PRODUCT CARDS ============ */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:14px;margin-bottom:20px;
+}
+.product-card{
+  background:#fff;border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+  border:1.5px solid var(--pink-soft);
+  transition:all .3s ease;
+  display:flex;flex-direction:column;
+  animation:fadeInUp .5s ease backwards;
+}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--pink)}
+.product-img{
+  width:100%;aspect-ratio:1/1;object-fit:cover;
+  cursor:pointer;transition:transform .4s;
+  background:var(--pink-light);
+}
+.product-card:hover .product-img{transform:scale(1.05)}
+.product-body{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.product-name{font-weight:700;font-size:14px;color:var(--text);line-height:1.3}
+.product-price{font-weight:700;color:var(--pink-dark);font-size:15px}
+.product-unit{font-size:12px;color:var(--text-light)}
+.product-stock{font-size:12px;color:var(--success);font-weight:600}
+.product-stock.out{color:var(--danger)}
+.product-desc{font-size:12px;color:var(--text-light);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-actions{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.btn-mini{
+  flex:1;padding:8px;border-radius:10px;
+  font-size:12px;font-weight:700;
+  transition:all .2s;
+}
+.btn-mini.detail{background:var(--pink-light);color:var(--pink-dark)}
+.btn-mini.detail:hover{background:var(--pink-soft)}
+.btn-mini.add{background:linear-gradient(135deg,var(--pink-deep),var(--pink-dark));color:#fff}
+.btn-mini.add:hover{transform:scale(1.03);box-shadow:0 4px 12px rgba(255,143,192,0.5)}
+.btn-mini.add:disabled{background:#E8E0E5;color:#A99DA5;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ============ DETAIL PAGE ============ */
+.detail-wrap{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:18px;margin-bottom:20px;
+}
+.detail-img{
+  width:100%;max-width:340px;margin:0 auto 18px;
+  border-radius:var(--radius-sm);aspect-ratio:1/1;object-fit:cover;
+  box-shadow:var(--shadow);transition:transform .4s;
+}
+.detail-img:hover{transform:scale(1.03)}
+.detail-name{font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;color:var(--pink-dark);margin-bottom:8px}
+.detail-price{font-size:24px;font-weight:700;color:var(--pink-dark);margin:10px 0}
+.detail-desc{color:var(--text-light);font-size:14px;line-height:1.7;margin:12px 0}
+.detail-stock{font-size:14px;font-weight:600;margin:8px 0}
+.detail-stock.ok{color:var(--success)}
+.detail-stock.no{color:var(--danger)}
+.warning-box{
+  background:#FFF6E5;border-left:4px solid var(--warning);
+  padding:12px 14px;border-radius:10px;
+  font-size:13px;color:#8A6D3B;margin:12px 0;
+  display:flex;gap:8px;align-items:flex-start;
+}
+
+/* Quantity selector */
+.qty-row{
+  display:flex;align-items:center;gap:12px;
+  margin:16px 0;padding:14px;
+  background:var(--pink-light);border-radius:var(--radius-sm);
+}
+.qty-btn{
+  width:40px;height:40px;border-radius:50%;
+  background:#fff;color:var(--pink-dark);
+  font-size:20px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow);transition:all .2s;
+}
+.qty-btn:hover{background:var(--pink-deep);color:#fff;transform:scale(1.1)}
+.qty-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.qty-value{
+  font-size:20px;font-weight:700;color:var(--pink-dark);
+  min-width:60px;text-align:center;
+}
+.qty-unit{font-size:13px;color:var(--text-light)}
+.total-price{
+  font-size:22px;font-weight:700;color:var(--pink-dark);
+  text-align:right;padding:10px 0;
+}
+
+/* ============ CART ============ */
+.cart-item{
+  display:flex;gap:12px;
+  background:#fff;border-radius:var(--radius-sm);
+  padding:12px;box-shadow:var(--shadow);
+  border:1.5px solid var(--pink-soft);
+  margin-bottom:10px;align-items:center;
+  animation:fadeInUp .3s ease;
+}
+.cart-item img{width:70px;height:70px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.cart-info{flex:1;min-width:0}
+.cart-name{font-weight:700;font-size:14px;margin-bottom:2px}
+.cart-price{font-size:13px;color:var(--pink-dark);font-weight:600}
+.cart-qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.cart-qty button{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--pink-light);color:var(--pink-dark);
+  font-weight:700;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.cart-qty button:hover{background:var(--pink-deep);color:#fff}
+.cart-qty span{font-weight:700;font-size:14px;min-width:30px;text-align:center}
+.cart-subtotal{font-weight:700;color:var(--pink-dark);font-size:14px;text-align:right;margin-top:4px}
+.cart-remove{
+  color:var(--danger);font-size:20px;
+  padding:6px;border-radius:8px;transition:all .2s;
+}
+.cart-remove:hover{background:#FFE8E8}
+
+.cart-total-box{
+  background:linear-gradient(135deg,var(--pink-light),var(--soft-blue-2));
+  border-radius:var(--radius);padding:18px;
+  margin:16px 0;box-shadow:var(--shadow);
+}
+.cart-total-row{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:16px;font-weight:700;color:var(--pink-dark);
+}
+
+/* ============ EMPTY STATE ============ */
+.empty-state{
+  text-align:center;padding:50px 20px;
+  background:#fff;border-radius:var(--radius);
+  box-shadow:var(--shadow);margin:20px 0;
+}
+.empty-state .emoji{font-size:60px;margin-bottom:12px;display:block}
+.empty-state p{color:var(--text-light);font-size:15px;margin-bottom:18px}
+
+/* ============ FORMS ============ */
+.form-group{margin-bottom:14px}
+.form-label{
+  display:block;font-weight:600;font-size:14px;
+  color:var(--text);margin-bottom:6px;
+}
+.form-label .req{color:var(--danger)}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:12px 14px;
+  border:1.5px solid var(--pink-soft);
+  border-radius:var(--radius-sm);
+  background:#fff;color:var(--text);
+  font-size:15px;transition:all .25s;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{
+  border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,182,213,0.2);
+}
+.form-textarea{resize:vertical;min-height:80px}
+.form-hint{font-size:12px;color:var(--text-light);margin-top:4px}
+
+/* Checkbox group for payment */
+.pay-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:10px;margin:10px 0;
+}
+.pay-option{
+  display:flex;align-items:center;gap:8px;
+  padding:12px;border-radius:var(--radius-sm);
+  background:#fff;border:1.5px solid var(--pink-soft);
+  cursor:pointer;transition:all .25s;font-size:13px;font-weight:600;
+}
+.pay-option:hover{border-color:var(--pink);transform:translateY(-2px)}
+.pay-option.selected{border-color:var(--pink-deep);background:var(--pink-light);box-shadow:0 0 0 3px rgba(255,143,192,0.15)}
+.pay-option .pay-icon{font-size:18px}
+
+/* Checkbox item */
+.checkbox-item{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:12px;background:var(--pink-light);
+  border-radius:var(--radius-sm);margin:14px 0;font-size:13px;
+  cursor:pointer;
+}
+.checkbox-item input{margin-top:2px;width:18px;height:18px;accent-color:var(--pink-deep);cursor:pointer}
+
+/* ============ FILE UPLOAD ============ */
+.file-upload{
+  border:2px dashed var(--pink);
+  border-radius:var(--radius-sm);
+  padding:20px;text-align:center;
+  background:var(--pink-light);cursor:pointer;
+  transition:all .25s;
+}
+.file-upload:hover{background:var(--pink-soft);border-color:var(--pink-deep)}
+.file-upload .up-icon{font-size:32px;margin-bottom:6px;display:block}
+.file-upload p{font-size:13px;color:var(--text-light)}
+.file-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;background:#fff;
+  border-radius:10px;margin-top:8px;
+  box-shadow:var(--shadow);font-size:13px;
+}
+.file-item .f-icon{font-size:20px}
+.file-item .f-info{flex:1;min-width:0}
+.file-item .f-name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file-item .f-meta{font-size:11px;color:var(--text-light)}
+.file-item button{color:var(--danger);font-size:18px;padding:4px}
+
+/* ============ CONFIRMATION / ORDER SUMMARY ============ */
+.summary-box{
+  background:#fff;border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow);
+  margin-bottom:14px;border:1.5px solid var(--pink-soft);
+}
+.summary-box h3{
+  font-family:'Poppins',sans-serif;font-size:16px;
+  color:var(--pink-dark);margin-bottom:12px;
+  display:flex;align-items:center;gap:6px;
+}
+.summary-row{
+  display:flex;justify-content:space-between;
+  padding:7px 0;font-size:14px;
+  border-bottom:1px dashed var(--pink-soft);
+}
+.summary-row:last-child{border-bottom:none}
+.summary-row .label{color:var(--text-light)}
+.summary-row .value{font-weight:600;color:var(--text);text-align:right;max-width:60%;word-break:break-word}
+.summary-row.total{font-size:16px;font-weight:700;color:var(--pink-dark);padding-top:10px}
+
+/* ============ PAYMENT DETAIL ============ */
+.pay-detail{
+  background:linear-gradient(135deg,var(--pink-light),var(--soft-blue-2));
+  border-radius:var(--radius);padding:18px;
+  margin:14px 0;box-shadow:var(--shadow);
+  animation:fadeIn .4s;
+}
+.pay-detail h3{font-family:'Poppins',sans-serif;color:var(--pink-dark);margin-bottom:12px;font-size:16px}
+.copy-field{
+  display:flex;justify-content:space-between;align-items:center;
+  background:#fff;border-radius:10px;padding:12px;margin:8px 0;
+  font-size:14px;gap:10px;
+}
+.copy-field .cf-val{font-weight:700;color:var(--pink-dark);word-break:break-all}
+.copy-btn{
+  padding:8px 14px;border-radius:10px;
+  background:var(--pink-light);color:var(--pink-dark);
+  font-weight:700;font-size:12px;transition:all .2s;
+  flex-shrink:0;
+}
+.copy-btn:hover{background:var(--pink-deep);color:#fff}
+.copy-btn.copied{background:var(--success);color:#fff}
+.qris-img{
+  width:220px;height:220px;margin:12px auto;
+  border-radius:14px;background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow);font-size:80px;
+}
+
+/* ============ ORDERS ============ */
+.order-card{
+  background:#fff;border-radius:var(--radius);
+  padding:16px;box-shadow:var(--shadow);
+  border:1.5px solid var(--pink-soft);margin-bottom:12px;
+  animation:fadeInUp .4s ease;
+}
+.order-head{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:10px;
+  padding-bottom:10px;border-bottom:1px dashed var(--pink-soft);
+}
+.order-id{font-weight:700;color:var(--pink-dark);font-size:14px}
+.order-date{font-size:12px;color:var(--text-light)}
+.order-status{
+  font-size:12px;font-weight:700;padding:4px 10px;
+  border-radius:20px;background:var(--pink-light);color:var(--pink-dark);
+}
+.order-status.selesai{background:#E3F9EB;color:#2E9E5B}
+.order-body{font-size:13px;color:var(--text-light);margin-bottom:10px}
+.order-body strong{color:var(--text)}
+
+/* ============ PROFILE ============ */
+.profile-card{
+  background:linear-gradient(135deg,var(--pink-light),var(--soft-blue-2));
+  border-radius:var(--radius);padding:22px;
+  text-align:center;box-shadow:var(--shadow);margin-bottom:16px;
+}
+.avatar{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;color:#fff;margin:0 auto 12px;
+  box-shadow:var(--shadow);
+}
+.profile-name{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--pink-dark)}
+.profile-email{font-size:13px;color:var(--text-light);margin-top:4px}
+
+/* ============ MODAL ============ */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(74,60,71,0.5);
+  backdrop-filter:blur(4px);z-index:1000;
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+}
+.modal-overlay.active{display:flex;animation:fadeIn .25s}
+.modal{
+  background:#fff;border-radius:var(--radius);
+  padding:22px;max-width:380px;width:100%;
+  box-shadow:var(--shadow-lg);animation:modalIn .3s ease;
+  max-height:85vh;overflow-y:auto;
+}
+@keyframes modalIn{from{opacity:0;transform:scale(0.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal h3{font-family:'Poppins',sans-serif;color:var(--pink-dark);margin-bottom:10px;font-size:18px}
+.modal p{color:var(--text-light);font-size:14px;margin-bottom:16px;line-height:1.6}
+.modal-actions{display:flex;gap:10px}
+.modal-actions button{flex:1}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed;bottom:100px;left:50%;
+  transform:translateX(-50%) translateY(30px);
+  background:var(--pink-dark);color:#fff;
+  padding:12px 22px;border-radius:30px;
+  font-weight:600;font-size:14px;
+  box-shadow:var(--shadow-lg);z-index:2000;
+  opacity:0;pointer-events:none;transition:all .35s;
+  display:flex;align-items:center;gap:8px;
+  max-width:90vw;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============ BOTTOM NAV (Mobile) ============ */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(12px);
+  border-top:1.5px solid var(--pink-soft);
+  display:flex;justify-content:space-around;
+  padding:8px 4px 10px;z-index:100;
+  box-shadow:0 -4px 20px rgba(255,182,213,0.2);
+}
+.bottom-nav button{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:6px 10px;border-radius:14px;
+  color:var(--text-light);font-size:11px;font-weight:600;
+  transition:all .25s;position:relative;flex:1;
+}
+.bottom-nav button .bn-icon{font-size:20px;transition:transform .25s}
+.bottom-nav button.active{color:var(--pink-dark)}
+.bottom-nav button.active .bn-icon{transform:scale(1.15) translateY(-2px)}
+.bottom-nav button:hover{color:var(--pink-dark)}
+.bottom-nav .badge{top:-2px;right:6px}
+
+/* ============ FOOTER ============ */
+.footer{
+  background:linear-gradient(135deg,var(--pink-light),var(--soft-blue-2));
+  border-radius:24px 24px 0 0;
+  padding:28px 20px 100px;margin-top:30px;
+  text-align:center;
+}
+.footer .f-logo{
+  font-family:'Poppins',sans-serif;font-weight:700;
+  font-size:20px;color:var(--pink-dark);margin-bottom:6px;
+}
+.footer .f-tag{font-size:13px;color:var(--text-light);margin-bottom:16px}
+.footer .f-links{
+  display:flex;justify-content:center;gap:16px;
+  flex-wrap:wrap;margin-bottom:14px;
+}
+.footer .f-links button{
+  font-size:13px;font-weight:600;color:var(--text-light);
+  transition:color .2s;
+}
+.footer .f-links button:hover{color:var(--pink-dark)}
+.footer .f-social{
+  display:flex;justify-content:center;gap:12px;margin:14px 0;
+}
+.footer .f-social a{
+  width:42px;height:42px;border-radius:50%;
+  background:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:20px;box-shadow:var(--shadow);
+  transition:all .25s;
+}
+.footer .f-social a:hover{transform:translateY(-3px) scale(1.08);box-shadow:var(--shadow-lg)}
+.footer .f-quote{
+  font-size:13px;font-style:italic;color:var(--text-light);
+  margin-top:12px;
+}
+
+/* ============ ADMIN ============ */
+.admin-toggle{
+  background:var(--soft-blue-2);color:#4A7A9E;
+  padding:6px 14px;border-radius:20px;
+  font-size:12px;font-weight:700;
+}
+.admin-toggle.active{background:var(--pink-deep);color:#fff}
+
+/* ============ RESPONSIVE ============ */
+@media(min-width:768px){
+  body{padding-bottom:0}
+  .bottom-nav{display:none}
+  .nav-desktop{display:flex}
+  .hero{padding:36px 32px}
+  .hero h1{font-size:32px}
+  .hero-illustration{font-size:90px}
+  .product-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+  .footer{padding-bottom:40px;border-radius:24px 24px 0 0}
+  .container{padding:0 24px}
+}
+@media(max-width:360px){
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .product-name{font-size:13px}
+  .hero h1{font-size:22px}
+}
+
+/* Loading animation */
+.loader{
+  display:inline-block;width:18px;height:18px;
+  border:2.5px solid rgba(255,255,255,0.4);
+  border-top-color:#fff;border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Selected product preview in checkout */
+.mini-product{
+  display:flex;gap:10px;align-items:center;
+  padding:10px;background:var(--pink-light);
+  border-radius:10px;margin-bottom:8px;
+}
+.mini-product img{width:50px;height:50px;border-radius:8px;object-fit:cover}
+.mini-product .mp-info{flex:1;min-width:0}
+.mini-product .mp-name{font-weight:700;font-size:13px}
+.mini-product .mp-meta{font-size:12px;color:var(--text-light)}
+
+/* Instagram & TikTok colors */
+.ig-color{color:#E1306C}
+.tt-color{color:#000}
+.wa-color{color:#25D366}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP NAVBAR ============ -->
+<header class="topbar">
+  <div class="logo" onclick="goPage('home')">
+    <span class="emoji">🎀</span> PinkyEdu
+  </div>
+  <nav class="nav-desktop" id="navDesktop">
+    <button data-page="home" onclick="goPage('home')">Beranda</button>
+    <button data-page="shop" onclick="goPage('shop')">Jualan</button>
+    <button data-page="cart" onclick="goPage('cart')">Keranjang</button>
+    <button data-page="orders" onclick="goPage('orders')">Pesanan</button>
+    <button data-page="profile" onclick="goPage('profile')">Profil</button>
+  </nav>
+  <div class="topbar-actions">
+    <button class="icon-btn" onclick="goPage('cart')" title="Keranjang">
+      🛒<span class="badge" id="cartBadgeTop" style="display:none">0</span>
+    </button>
+    <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()" title="Mode Admin">🔧</button>
+  </div>
+</header>
+
+<!-- ============ MAIN CONTENT ============ -->
+<main class="container" id="mainContent">
+
+  <!-- ===== HOME PAGE ===== -->
+  <section class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Selamat Datang di PinkyEdu 💗</h1>
+        <p class="quote">Sedikit demi sedikit, tugas selesai satu per satu.</p>
+        <div class="hero-illustration">📚✏️🌸</div>
+        <button class="btn-primary" onclick="goPage('shop')">🛍️ Lihat Jualan</button>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-icon">💸</div>
+        <p>Harga produk dapat menyesuaikan jumlah pembelian.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">📎</div>
+        <p>Beberapa layanan membutuhkan file pendukung.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">⏰</div>
+        <p>Pesanan layanan akademik sebaiknya dilakukan sesuai waktu yang dibutuhkan.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">💬</div>
+        <p>Pesanan dikonfirmasi melalui WhatsApp Admin.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">✨ Produk Populer</h2>
+    <div class="product-grid" id="homeProducts"></div>
+
+    <div class="footer">
+      <div class="f-logo">🎀 PinkyEdu</div>
+      <p class="f-tag">Belajar, mengerjakan tugas, dan menyelesaikan kebutuhan akademik jadi lebih mudah.</p>
+      <div class="f-links">
+        <button onclick="goPage('shop')">Jualan</button>
+        <button onclick="goPage('orders')">Pesanan</button>
+        <button onclick="goPage('profile')">Profil</button>
+        <button onclick="openWaGeneral()">Bantuan</button>
+      </div>
+      <div class="f-social">
+        <a href="https://wa.me/6285604740012" target="_blank" title="WhatsApp"><span class="wa-color">💬</span></a>
+        <a href="https://www.instagram.com/pinkyedu.id?stkn=c2I4NjZnamhsemM3&utm_source=qr" target="_blank" title="Instagram"><span class="ig-color">📷</span></a>
+        <a href="https://www.tiktok.com/@pinkyedu.id" target="_blank" title="TikTok"><span class="tt-color">🎵</span></a>
+      </div>
+      <p class="f-quote">"Pelan-pelan tidak apa-apa, yang penting tetap berjalan. 💗"</p>
+    </div>
+  </section>
+
+  <!-- ===== SHOP PAGE ===== -->
+  <section class="page" id="page-shop">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <h2 class="section-title" style="margin-top:16px">🛍️ Jualan</h2>
+      <button class="admin-toggle" id="adminToggleShop" onclick="toggleAdmin()" style="display:none">🔧 Mode Admin</button>
+    </div>
+    <div id="adminPanel" style="display:none"></div>
+    <div class="product-grid" id="shopProducts"></div>
+  </section>
+
+  <!-- ===== PRODUCT DETAIL PAGE ===== -->
+  <section class="page" id="page-detail">
+    <button class="back-btn" onclick="goBack()">← Kembali</button>
+    <div class="detail-wrap" id="detailContent"></div>
+  </section>
+
+  <!-- ===== CART PAGE ===== -->
+  <section class="page" id="page-cart">
+    <button class="back-btn" onclick="goBack()">← Kembali</button>
+    <h2 class="section-title">🛒 Keranjang</h2>
+    <div id="cartContent"></div>
+  </section>
+
+  <!-- ===== CHECKOUT PAGE ===== -->
+  <section class="page" id="page-checkout">
+    <button class="back-btn" onclick="goBack()">← Kembali</button>
+    <h2 class="section-title">📝 Checkout</h2>
+    <div id="checkoutContent"></div>
+  </section>
+
+  <!-- ===== CONFIRMATION PAGE ===== -->
+  <section class="page" id="page-confirm">
+    <button class="back-btn" onclick="goBack()">← Kembali</button>
+    <h2 class="section-title">✅ Konfirmasi Pesanan</h2>
+    <div id="confirmContent"></div>
+  </section>
+
+  <!-- ===== PAYMENT PAGE ===== -->
+  <section class="page" id="page-payment">
+    <button class="back-btn" onclick="goBack()">← Kembali</button>
+    <h2 class="section-title">💳 Pembayaran</h2>
+    <div id="paymentContent"></div>
+  </section>
+
+  <!-- ===== ORDERS PAGE ===== -->
+  <section class="page" id="page-orders">
+    <h2 class="section-title" style="margin-top:16px">📦 Pesanan</h2>
+    <div id="ordersContent"></div>
+  </section>
+
+  <!-- ===== PROFILE PAGE ===== -->
+  <section class="page" id="page-profile">
+    <button class="back-btn" onclick="goBack()">← Kembali</button>
+    <h2 class="section-title">👤 Profil</h2>
+    <div id="profileContent"></div>
+  </section>
+
+</main>
+
+<!-- ============ BOTTOM NAV (Mobile) ============ -->
+<nav class="bottom-nav" id="bottomNav">
+  <button data-page="home" onclick="goPage('home')"><span class="bn-icon">🏠</span>Beranda</button>
+  <button data-page="shop" onclick="goPage('shop')"><span class="bn-icon">🛍️</span>Jualan</button>
+  <button data-page="cart" onclick="goPage('cart')"><span class="bn-icon">🛒</span>Keranjang<span class="badge" id="cartBadgeBottom" style="display:none">0</span></button>
+  <button data-page="orders" onclick="goPage('orders')"><span class="bn-icon">📦</span>Pesanan</button>
+  <button data-page="profile" onclick="goPage('profile')"><span class="bn-icon">👤</span>Profil</button>
+</nav>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   PINKYEDU - APP LOGIC
+   ============================================================ */
+
+/* ---------- CONSTANTS ---------- */
+const WA_NUMBER = '6285604740012';
+const WA_DISPLAY = '085604740012';
+const IG_URL = 'https://www.instagram.com/pinkyedu.id?stkn=c2I4NjZnamhsemM3&utm_source=qr';
+const TT_URL = 'https://www.tiktok.com/@pinkyedu.id';
+
+/* ---------- DEFAULT PRODUCTS ---------- */
+const DEFAULT_PRODUCTS = [
+  {
+    id: 'margin-fisika',
+    name: 'Kertas Margin Fisika',
+    price: 3000,
+    unit: '10 lembar',
+    step: 10,
+    desc: 'Kertas margin fisika yang dapat digunakan untuk kebutuhan pembelajaran dan tugas fisika. Harga dihitung berdasarkan jumlah lembar yang dipilih.',
+    img: 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFE1EF"/><rect x="40" y="30" width="120" height="140" rx="6" fill="#fff" stroke="#FFB6D5" stroke-width="3"/><line x1="55" y1="55" x2="145" y2="55" stroke="#FFB6D5" stroke-width="2"/><line x1="55" y1="75" x2="145" y2="75" stroke="#FFD1E3" stroke-width="2"/><line x1="55" y1="95" x2="145" y2="95" stroke="#FFD1E3" stroke-width="2"/><line x1="55" y1="115" x2="145" y2="115" stroke="#FFD1E3" stroke-width="2"/><line x1="55" y1="135" x2="145" y2="135" stroke="#FFD1E3" stroke-width="2"/><circle cx="40" cy="55" r="5" fill="#FF8FC0"/><circle cx="40" cy="95" r="5" fill="#FF8FC0"/><circle cx="40" cy="135" r="5" fill="#FF8FC0"/><text x="100" y="185" text-anchor="middle" font-size="14" fill="#E86BA5" font-family="sans-serif">Fisika 📐</text></svg>`),
+    stock: 50,
+    category: 'produk'
+  },
+  {
+    id: 'margin-biologi',
+    name: 'Alat Margin Biologi',
+    price: 15000,
+    unit: 'alat',
+    step: 1,
+    desc: 'Alat margin biologi untuk membantu kebutuhan pembelajaran dan kegiatan praktikum atau tugas biologi.',
+    img: 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#E3F2FB"/><rect x="50" y="50" width="100" height="100" rx="10" fill="#fff" stroke="#7FC8E8" stroke-width="3"/><circle cx="100" cy="100" r="30" fill="none" stroke="#7FC8E8" stroke-width="3"/><circle cx="100" cy="100" r="12" fill="#C8E6F5"/><line x1="100" y1="70" x2="100" y2="130" stroke="#7FC8E8" stroke-width="2"/><line x1="70" y1="100" x2="130" y2="100" stroke="#7FC8E8" stroke-width="2"/><text x="100" y="185" text-anchor="middle" font-size="14" fill="#4A7A9E" font-family="sans-serif">Biologi 🧬</text></svg>`),
+    stock: 30,
+    category: 'produk'
+  },
+  {
+    id: 'cek-turnitin',
+    name: 'Cek Turnitin',
+    price: 5000,
+    unit: 'dokumen',
+    step: 1,
+    desc: 'Layanan pengecekan tingkat kemiripan dokumen serta pendampingan untuk memahami hasil pemeriksaan dan memperbaiki bagian tulisan yang perlu diperhatikan. Layanan ini tidak digunakan untuk menyiasati atau menghindari sistem pemeriksaan, tetapi untuk membantu pengguna memahami hasil dan memperbaiki tulisan secara akademik.',
+    img: 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFF0F7"/><rect x="45" y="35" width="110" height="130" rx="8" fill="#fff" stroke="#FF8FC0" stroke-width="3"/><circle cx="100" cy="80" r="22" fill="none" stroke="#FF8FC0" stroke-width="3"/><path d="M92 80 l6 6 l12 -14" stroke="#FF8FC0" stroke-width="3" fill="none" stroke-linecap="round"/><line x1="60" y1="120" x2="140" y2="120" stroke="#FFD1E3" stroke-width="2"/><line x1="60" y1="135" x2="120" y2="135" stroke="#FFD1E3" stroke-width="2"/><text x="100" y="185" text-anchor="middle" font-size="14" fill="#E86BA5" font-family="sans-serif">Turnitin ✅</text></svg>`),
+    stock: 99,
+    category: 'layanan',
+    needsFile: true,
+    fileHint: 'Upload dokumen yang ingin dicek (PDF/DOC/DOCX).'
+  },
+  {
+    id: 'daftar-pustaka',
+    name: 'Jasa Daftar Pustaka',
+    price: 7000,
+    unit: '10 daftar pustaka',
+    step: 10,
+    desc: 'Layanan penyusunan dan pengecekan daftar pustaka berdasarkan sumber yang diberikan oleh pengguna. Pemesanan jasa daftar pustaka maksimal dilakukan H-1.',
+    img: 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFF8F0"/><rect x="35" y="60" width="30" height="90" rx="3" fill="#FFB6D5"/><rect x="70" y="50" width="30" height="100" rx="3" fill="#C8E6F5"/><rect x="105" y="70" width="30" height="80" rx="3" fill="#FFD1E3"/><rect x="140" y="55" width="30" height="95" rx="3" fill="#B5E8C8"/><text x="100" y="185" text-anchor="middle" font-size="14" fill="#E86BA5" font-family="sans-serif">Daftar Pustaka 📚</text></svg>`),
+    stock: 99,
+    category: 'layanan',
+    needsFile: true,
+    fileHint: 'Upload sumber/referensi yang ingin disusun daftar pustakanya.',
+    warning: 'Pemesanan jasa daftar pustaka maksimal dilakukan H-1. Silakan pilih waktu pemesanan yang sesuai.'
+  },
+  {
+    id: 'makalah',
+    name: 'Pembuatan Makalah Bab 1–5',
+    price: 0,
+    unit: 'konsultasi',
+    step: 1,
+    desc: 'Layanan pendampingan penyusunan makalah Bab 1–5 berdasarkan materi, data, sumber, dan kebutuhan yang diberikan oleh pengguna. Layanan diarahkan sebagai pendampingan akademik, penyuntingan, dan pengembangan berdasarkan bahan yang diberikan pengguna.',
+    img: 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFE1EF"/><rect x="40" y="25" width="120" height="150" rx="8" fill="#fff" stroke="#FF8FC0" stroke-width="3"/><text x="100" y="60" text-anchor="middle" font-size="16" fill="#E86BA5" font-family="sans-serif" font-weight="bold">BAB 1-5</text><line x1="55" y1="80" x2="145" y2="80" stroke="#FFD1E3" stroke-width="2"/><line x1="55" y1="95" x2="145" y2="95" stroke="#FFD1E3" stroke-width="2"/><line x1="55" y1="110" x2="130" y2="110" stroke="#FFD1E3" stroke-width="2"/><line x1="55" y1="125" x2="145" y2="125" stroke="#FFD1E3" stroke-width="2"/><line x1="55" y1="140" x2="110" y2="140" stroke="#FFD1E3" stroke-width="2"/><text x="100" y="190" text-anchor="middle" font-size="12" fill="#E86BA5" font-family="sans-serif">📝 Makalah</text></svg>`),
+    stock: 99,
+    category: 'layanan',
+    needsFile: true,
+    fileHint: 'Upload materi/data pendukung makalah.',
+    special: 'makalah',
+    warning: 'Untuk layanan ini, silakan isi data dengan lengkap dan konsultasikan kebutuhan makalah kamu dengan Admin.'
+  }
+];
+
+/* ---------- STATE ---------- */
+let PRODUCTS = [];
+let CART = [];
+let ORDERS = [];
+let USER = null;
+let IS_ADMIN = false;
+let currentProduct = null;
+let tempCheckout = null;
+let currentOrder = null;
+let selectedPayment = '';
+let uploadedFiles = [];
+let formData = {};
+let pageHistory = [];
+
+/* ---------- INIT ---------- */
+function init() {
+  loadFromStorage();
+  renderHomeProducts();
+  renderShopProducts();
+  renderCart();
+  renderOrders();
+  renderProfile();
+  updateCartBadge();
+  if (USER) {
+    IS_ADMIN = USER.isAdmin || false;
+  }
+  updateAdminVisibility();
+}
+
+function loadFromStorage() {
+  try {
+    const p = localStorage.getItem('pinkyedu_products');
+    PRODUCTS = p ? JSON.parse(p) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+    if (!p) saveProducts();
+  } catch(e) { PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)); }
+  try {
+    CART = JSON.parse(localStorage.getItem('pinkyedu_cart') || '[]');
+  } catch(e) { CART = []; }
+  try {
+    ORDERS = JSON.parse(localStorage.getItem('pinkyedu_orders') || '[]');
+  } catch(e) { ORDERS = []; }
+  try {
+    USER = JSON.parse(localStorage.getItem('pinkyedu_user') || 'null');
+  } catch(e) { USER = null; }
+}
+function saveProducts() { localStorage.setItem('pinkyedu_products', JSON.stringify(PRODUCTS)); }
+function saveCart() { localStorage.setItem('pinkyedu_cart', JSON.stringify(CART)); }
+function saveOrders() { localStorage.setItem('pinkyedu_orders', JSON.stringify(ORDERS)); }
+function saveUser() { localStorage.setItem('pinkyedu_user', JSON.stringify(USER)); }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+function goPage(page, push = true) {
+  const current = document.querySelector('.page.active');
+  const currentId = current ? current.id : 'page-home';
+  if (push && currentId !== 'page-' + page) {
+    pageHistory.push(currentId.replace('page-', ''));
+  }
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (target) target.classList.add('active');
+  // Update nav active
+  document.querySelectorAll('.nav-desktop button, .bottom-nav button').forEach(b => {
+    b.classList.toggle('active', b.dataset.page === page);
+  });
+  // Scroll top
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  // Refresh content if needed
+  if (page === 'cart') renderCart();
+  if (page === 'orders') renderOrders();
+  if (page === 'profile') renderProfile();
+  if (page === 'shop') renderShopProducts();
+  if (page === 'home') renderHomeProducts();
+}
+
+function goBack() {
+  const prev = pageHistory.pop();
+  if (prev) {
+    goPage(prev, false);
+  } else {
+    goPage('home', false);
+  }
+}
+
+/* ============================================================
+   PRODUCT RENDERING
+   ============================================================ */
+function renderProductCard(p, idx) {
+  const outOfStock = p.stock <= 0;
+  const priceText = p.price > 0 ? 'Rp' + p.price.toLocaleString('id-ID') : 'Konsultasi';
+  const stepText = p.step > 1 ? `per ${p.step} ${p.unit}` : `per ${p.unit}`;
+  return `
+    <div class="product-card" style="animation-delay:${idx * 0.05}s">
+      <img class="product-img" src="${p.img}" alt="${p.name}" onclick="openDetail('${p.id}')">
+      <div class="product-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">${priceText}</div>
+        <div class="product-unit">${stepText}</div>
+        <div class="product-stock ${outOfStock ? 'out' : ''}">
+          ${outOfStock ? '❌ Stok habis' : '✅ Stok tersedia: ' + p.stock}
+        </div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-actions">
+          <button class="btn-mini detail" onclick="openDetail('${p.id}')">Detail</button>
+          <button class="btn-mini add" onclick="quickAdd('${p.id}')" ${outOfStock ? 'disabled' : ''}>+ Keranjang</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderHomeProducts() {
+  const el = document.getElementById('homeProducts');
+  if (!el) return;
+  const featured = PRODUCTS.slice(0, 3);
+  el.innerHTML = featured.map((p, i) => renderProductCard(p, i)).join('');
+}
+
+function renderShopProducts() {
+  const el = document.getElementById('shopProducts');
+  if (!el) return;
+  el.innerHTML = PRODUCTS.map((p, i) => renderProductCard(p, i)).join('');
+  updateAdminVisibility();
+}
+
+/* ============================================================
+   PRODUCT DETAIL
+   ============================================================ */
+function openDetail(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  currentProduct = p;
+  const outOfStock = p.stock <= 0;
+  const priceText = p.price > 0 ? 'Rp' + p.price.toLocaleString('id-ID') : 'Konsultasi';
+  const stepText = p.step > 1 ? `per ${p.step} ${p.unit}` : `per ${p.unit}`;
+  const el = document.getElementById('detailContent');
+  el.innerHTML = `
+    <img class="detail-img" src="${p.img}" alt="${p.name}">
+    <h2 class="detail-name">${p.name}</h2>
+    <div class="detail-price">${priceText} <span style="font-size:14px;color:var(--text-light);font-weight:500">/ ${stepText}</span></div>
+    <div class="detail-stock ${outOfStock ? 'no' : 'ok'}">
+      ${outOfStock ? '❌ Stok habis' : '✅ Stok tersedia: ' + p.stock}
+    </div>
+    <p class="detail-desc">${p.desc}</p>
+    ${p.warning ? `<div class="warning-box">⚠️ ${p.warning}</div>` : ''}
+    ${p.needsFile ? `<div class="warning-box">📎 ${p.fileHint || 'Layanan ini membutuhkan file pendukung.'}</div>` : ''}
+    ${!outOfStock ? `
+      <div class="qty-row">
+        <button class="qty-btn" onclick="changeDetailQty(-1)" id="dQtyMinus">−</button>
+        <div style="flex:1;text-align:center">
+          <div class="qty-value" id="dQtyVal">${p.step}</div>
+          <div class="qty-unit" id="dQtyUnit">${p.unit}</div>
+        </div>
+        <button class="qty-btn" onclick="changeDetailQty(1)" id="dQtyPlus">+</button>
+      </div>
+      <div class="total-price" id="dTotal">Rp${(p.price * (p.step / p.step) * p.step).toLocaleString('id-ID')}</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+        <button class="btn-secondary" style="flex:1" onclick="addToCartFromDetail()">🛒 Tambah ke Keranjang</button>
+        <button class="btn-primary" style="flex:1" onclick="buyNowFromDetail()">⚡ Beli Sekarang</button>
+      </div>
+    ` : `<button class="btn-primary" disabled style="width:100%;opacity:0.5;cursor:not-allowed">Stok Habis</button>`}
+    ${p.special === 'makalah' ? `
+      <button class="btn-wa" style="margin-top:12px" onclick="openWaMakalah()">💬 Konsultasi ke WhatsApp Admin</button>
+    ` : ''}
+  `;
+  // reset qty
+  if (!outOfStock) {
+    window._detailQty = p.step;
+    updateDetailTotal();
+  }
+  goPage('detail');
+}
+
+function changeDetailQty(delta) {
+  const p = currentProduct;
+  if (!p) return;
+  const step = p.step;
+  let q = window._detailQty || step;
+  q += delta * step;
+  if (q < step) q = step;
+  if (q > p.stock) { q = Math.floor(p.stock / step) * step; if (q < step) q = step; showToast('Jumlah melebihi stok'); }
+  window._detailQty = q;
+  document.getElementById('dQtyVal').textContent = q;
+  updateDetailTotal();
+}
+
+function updateDetailTotal() {
+  const p = currentProduct;
+  if (!p) return;
+  const q = window._detailQty || p.step;
+  const total = p.price * (q / p.step);
+  document.getElementById('dTotal').textContent = 'Rp' + total.toLocaleString('id-ID');
+}
+
+/* ============================================================
+   CART
+   ============================================================ */
+function quickAdd(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p || p.stock <= 0) { showToast('Stok habis'); return; }
+  const existing = CART.find(c => c.productId === id);
+  const step = p.step;
+  if (existing) {
+    const newQty = existing.qty + step;
+    if (newQty > p.stock) { showToast('Jumlah melebihi stok'); return; }
+    existing.qty = newQty;
+  } else {
+    CART.push({ productId: id, qty: step });
+  }
+  saveCart();
+  updateCartBadge();
+  renderCart();
+  showToast('💗 Ditambahkan ke keranjang!');
+}
+
+function addToCartFromDetail() {
+  const p = currentProduct;
+  if (!p) return;
+  const q = window._detailQty || p.step;
+  const existing = CART.find(c => c.productId === p.id);
+  if (existing) {
+    const newQty = existing.qty + q;
+    if (newQty > p.stock) { showToast('Jumlah melebihi stok'); return; }
+    existing.qty = newQty;
+  } else {
+    CART.push({ productId: p.id, qty: q });
+  }
+  saveCart();
+  updateCartBadge();
+  renderCart();
+  showToast('💗 Ditambahkan ke keranjang!');
+}
+
+function buyNowFromDetail() {
+  const p = currentProduct;
+  if (!p) return;
+  const q = window._detailQty || p.step;
+  CART = [{ productId: p.id, qty: q }];
+  saveCart();
+  updateCartBadge();
+  renderCart();
+  goPage('checkout');
+}
+
+function updateCartBadge() {
+  const count = CART.reduce((sum, c) => sum + c.qty, 0);
+  const badges = [document.getElementById('cartBadgeTop'), document.getElementById('cartBadgeBottom')];
+  badges.forEach(b => {
+    if (b) {
+      b.textContent = count;
+      b.style.display = count > 0 ? 'flex' : 'none';
+      b.style.animation = 'none';
+      void b.offsetWidth;
+      b.style.animation = 'pop .3s ease';
+    }
+  });
+}
+
+function renderCart() {
+  const el = document.getElementById('cartContent');
+  if (!el) return;
+  if (CART.length === 0) {
+    el.innerHTML = `
+      <div class="empty-state">
+        <span class="emoji">🛒</span>
+        <p>Keranjang kamu masih kosong 💗</p>
+        <button class="btn-primary" onclick="goPage('shop')">Mulai Belanja</button>
+      </div>
+    `;
+    return;
+  }
+  let html = '';
+  let total = 0;
+  CART.forEach((item, idx) => {
+    const p = PRODUCTS.find(x => x.id === item.productId);
+    if (!p) return;
+    const subtotal = p.price * (item.qty / p.step);
+    total += subtotal;
+    html += `
+      <div class="cart-item">
+        <img src="${p.img}" alt="${p.name}" onclick="openDetail('${p.id}')">
+        <div class="cart-info">
+          <div class="cart-name">${p.name}</div>
+          <div class="cart-price">Rp${p.price.toLocaleString('id-ID')} / ${p.step > 1 ? p.step + ' ' + p.unit : p.unit}</div>
+          <div class="cart-qty">
+            <button onclick="cartQty(${idx},-1)">−</button>
+            <span>${item.qty} ${p.unit}</span>
+            <button onclick="cartQty(${idx},1)">+</button>
+          </div>
+          <div class="cart-subtotal">Subtotal: Rp${subtotal.toLocaleString('id-ID')}</div>
+        </div>
+        <button class="cart-remove" onclick="removeCart(${idx})">🗑️</button>
+      </div>
+    `;
+  });
+  html += `
+    <div class="cart-total-box">
+      <div class="cart-total-row">
+        <span>Total Belanja</span>
+        <span>Rp${total.toLocaleString('id-ID')}</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <button class="btn-primary" style="width:100%" onclick="goPage('checkout')">Lanjut ke Checkout →</button>
+      <button class="btn-secondary" style="width:100%" onclick="goPage('shop')">+ Tambah Produk Lain</button>
+      <button class="btn-danger" style="width:100%" onclick="confirmCancelOrder()">Batalkan Pesanan</button>
+    </div>
+  `;
+  el.innerHTML = html;
+}
+
+function cartQty(idx, delta) {
+  const item = CART[idx];
+  if (!item) return;
+  const p = PRODUCTS.find(x => x.id === item.productId);
+  if (!p) return;
+  const step = p.step;
+  let q = item.qty + delta * step;
+  if (q < step) q = step;
+  if (q > p.stock) { showToast('Jumlah melebihi stok'); return; }
+  item.qty = q;
+  saveCart();
+  updateCartBadge();
+  renderCart();
+}
+
+function removeCart(idx) {
+  confirmAction('Hapus produk ini dari keranjang?', () => {
+    CART.splice(idx, 1);
+    saveCart();
+    updateCartBadge();
+    renderCart();
+    showToast('Produk dihapus');
+  });
+}
+
+function confirmCancelOrder() {
+  confirmAction('Apakah kamu yakin ingin membatalkan pesanan ini?', () => {
+    CART = [];
+    saveCart();
+    updateCartBadge();
+    renderCart();
+    showToast('Pesanan dibatalkan');
+  }, 'Ya, Batalkan Pesanan', 'Tidak, Kembali');
+}
+
+/* ============================================================
+   CHECKOUT
+   ============================================================ */
+function goCheckout() { goPage('checkout'); }
+
+function renderCheckout() {
+  const el = document.getElementById('checkoutContent');
+  if (!el) return;
+  if (CART.length === 0) {
+    el.innerHTML = `<div class="empty-state"><span class="emoji">🛒</span><p>Keranjang kosong. Silakan pilih produk dulu.</p><button class="btn-primary" onclick="goPage('shop')">Mulai Belanja</button></div>`;
+    return;
+  }
+  // Check if any service needs file
+  const needsFile = CART.some(c => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    return p && p.needsFile;
+  });
+  const isMakalah = CART.some(c => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    return p && p.special === 'makalah';
+  });
+  const isDaftarPustaka = CART.some(c => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    return p && p.id === 'daftar-pustaka';
+  });
+
+  let productsHtml = '';
+  let total = 0;
+  CART.forEach(c => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    if (!p) return;
+    const subtotal = p.price * (c.qty / p.step);
+    total += subtotal;
+    productsHtml += `
+      <div class="mini-product">
+        <img src="${p.img}" alt="${p.name}">
+        <div class="mp-info">
+          <div class="mp-name">${p.name}</div>
+          <div class="mp-meta">${c.qty} ${p.unit} × Rp${p.price.toLocaleString('id-ID')} = Rp${subtotal.toLocaleString('id-ID')}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  el.innerHTML = `
+    <div class="summary-box">
+      <h3>🛍️ Produk yang Dipesan</h3>
+      ${productsHtml}
+    </div>
+
+    <div class="summary-box">
+      <h3>👤 Data Pemesan</h3>
+      <div class="form-group">
+        <label class="form-label">Nama <span class="req">*</span></label>
+        <input class="form-input" id="coName" placeholder="Nama lengkap" value="${USER?.name || ''}">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email <span class="req">*</span></label>
+        <input class="form-input" id="coEmail" type="email" placeholder="email@example.com" value="${USER?.email || ''}">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nomor WhatsApp <span class="req">*</span></label>
+        <input class="form-input" id="coWa" type="tel" placeholder="08xxxxxxxxxx" value="${USER?.wa || ''}">
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <h3>📋 Detail Pesanan</h3>
+      <div class="form-group">
+        <label class="form-label">Waktu Pemesanan</label>
+        <input class="form-input" id="coTime" type="datetime-local">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Deadline (jika diperlukan)</label>
+        <input class="form-input" id="coDeadline" type="datetime-local">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Catatan Tambahan</label>
+        <textarea class="form-textarea" id="coNote" placeholder="Contoh: tolong dikerjakan dengan rapi, dll."></textarea>
+      </div>
+    </div>
+
+    ${isMakalah ? `
+    <div class="summary-box">
+      <h3>📝 Detail Layanan Makalah</h3>
+      <div class="form-group">
+        <label class="form-label">Judul/Topik <span class="req">*</span></label>
+        <input class="form-input" id="coJudul" placeholder="Judul atau topik makalah">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mata Kuliah</label>
+        <input class="form-input" id="coMatkul" placeholder="Nama mata kuliah">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Bab yang Dibutuhkan</label>
+        <input class="form-input" id="coBab" placeholder="Contoh: Bab 1-5">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Kebutuhan Layanan</label>
+        <textarea class="form-textarea" id="coKebutuhan" placeholder="Jelaskan kebutuhan makalah kamu..."></textarea>
+      </div>
+    </div>
+    ` : ''}
+
+    ${isDaftarPustaka ? `
+    <div class="warning-box">⚠️ Pemesanan jasa daftar pustaka maksimal dilakukan H-1. Silakan pilih waktu pemesanan yang sesuai.</div>
+    ` : ''}
+
+    ${needsFile ? `
+    <div class="summary-box">
+      <h3>📎 Upload File Pendukung</h3>
+      <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+        <span class="up-icon">📁</span>
+        <p>Klik untuk memilih file<br><small>PDF, DOC, DOCX, JPG, PNG</small></p>
+      </div>
+      <input type="file" id="fileInput" style="display:none" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onchange="handleFileSelect(event)">
+      <div id="fileList"></div>
+      <div class="form-hint" style="margin-top:10px">
+        File sudah dipilih. Setelah WhatsApp terbuka, silakan kirim file melalui lampiran WhatsApp agar Admin dapat menerimanya.
+      </div>
+    </div>
+    ` : ''}
+
+    <div class="summary-box">
+      <h3>💳 Metode Pembayaran <span class="req">*</span></h3>
+      <div class="pay-grid" id="payGrid">
+        ${renderPayOptions()}
+      </div>
+    </div>
+
+    <div class="cart-total-box">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span id="coTotal">Rp${total.toLocaleString('id-ID')}</span>
+      </div>
+    </div>
+
+    <button class="btn-primary" style="width:100%" onclick="proceedToConfirm()">Lanjut Konfirmasi →</button>
+  `;
+
+  // Set default time
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  const timeInput = document.getElementById('coTime');
+  if (timeInput) timeInput.value = now.toISOString().slice(0,16);
+
+  // Restore uploaded files display
+  renderFileList();
+  // Restore form data if any
+  if (formData) {
+    if (formData.name) document.getElementById('coName').value = formData.name;
+    if (formData.email) document.getElementById('coEmail').value = formData.email;
+    if (formData.wa) document.getElementById('coWa').value = formData.wa;
+    if (formData.note) document.getElementById('coNote').value = formData.note;
+  }
+}
+
+function renderPayOptions() {
+  const methods = [
+    { id:'bank', icon:'🏦', label:'Bank Transfer' },
+    { id:'va', icon:'🔢', label:'Virtual Account' },
+    { id:'qris', icon:'📱', label:'QRIS' },
+    { id:'gopay', icon:'💚', label:'GoPay' },
+    { id:'ovo', icon:'💜', label:'OVO' },
+    { id:'dana', icon:'💙', label:'DANA' },
+    { id:'shopeepay', icon:'🧡', label:'ShopeePay' },
+    { id:'linkaja', icon:'❤️', label:'LinkAja' },
+    { id:'mobile', icon:'📲', label:'Mobile Banking' },
+    { id:'other', icon:'💳', label:'Metode Lainnya' }
+  ];
+  return methods.map(m => `
+    <div class="pay-option ${selectedPayment === m.id ? 'selected' : ''}" onclick="selectPayment('${m.id}')">
+      <span class="pay-icon">${m.icon}</span>
+      <span>${m.label}</span>
+    </div>
+  `).join('');
+}
+
+function selectPayment(id) {
+  selectedPayment = id;
+  document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
+  document.querySelectorAll('.pay-option').forEach(el => {
+    if (el.getAttribute('onclick')?.includes("'"+id+"'")) el.classList.add('selected');
+  });
+  // Show payment detail
+  showPaymentDetail(id);
+}
+
+function showPaymentDetail(id) {
+  let detailHtml = '';
+  const total = getCartTotal();
+  const totalStr = 'Rp' + total.toLocaleString('id-ID');
+  if (id === 'bank') {
+    detailHtml = `
+      <div class="pay-detail">
+        <h3>🏦 Bank Transfer</h3>
+        <div class="copy-field"><span>Bank</span><span class="cf-val">BCA</span></div>
+        <div class="copy-field"><span>No. Rekening</span><span class="cf-val">1234567890</span><button class="copy-btn" onclick="copyText('1234567890',this)">Salin</button></div>
+        <div class="copy-field"><span>Atas Nama</span><span class="cf-val">PinkyEdu</span></div>
+        <div class="copy-field"><span>Total</span><span class="cf-val">${totalStr}</span></div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px">Transfer sesuai total, lalu konfirmasi via WhatsApp.</p>
+        <button class="btn-wa" style="margin-top:12px" onclick="openWaPayment()">💬 Konfirmasi Pembayaran via WhatsApp</button>
+      </div>
+    `;
+  } else if (id === 'va') {
+    detailHtml = `
+      <div class="pay-detail">
+        <h3>🔢 Virtual Account</h3>
+        <div class="copy-field"><span>Bank</span><span class="cf-val">BCA</span></div>
+        <div class="copy-field"><span>No. VA</span><span class="cf-val">88081234567890</span><button class="copy-btn" onclick="copyText('88081234567890',this)">Salin</button></div>
+        <div class="copy-field"><span>Total</span><span class="cf-val">${totalStr}</span></div>
+        <div class="copy-field"><span>Batas Waktu</span><span class="cf-val">24 jam</span></div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px">Bayar melalui m-Banking/ATM sesuai nomor VA.</p>
+        <button class="btn-wa" style="margin-top:12px" onclick="openWaPayment()">💬 Konfirmasi Pembayaran via WhatsApp</button>
+      </div>
+    `;
+  } else if (id === 'qris') {
+    detailHtml = `
+      <div class="pay-detail">
+        <h3>📱 QRIS</h3>
+        <div class="qris-img">📱</div>
+        <div class="copy-field"><span>Penerima</span><span class="cf-val">PinkyEdu</span></div>
+        <div class="copy-field"><span>Total</span><span class="cf-val">${totalStr}</span></div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px">Scan QRIS dengan aplikasi e-wallet/m-banking.</p>
+        <button class="btn-primary" style="margin-top:12px;width:100%" onclick="markPaid()">✅ Saya Sudah Membayar</button>
+      </div>
+    `;
+  } else if (['gopay','ovo','dana','shopeepay','linkaja'].includes(id)) {
+    const names = { gopay:'GoPay', ovo:'OVO', dana:'DANA', shopeepay:'ShopeePay', linkaja:'LinkAja' };
+    detailHtml = `
+      <div class="pay-detail">
+        <h3>${names[id]}</h3>
+        <div class="copy-field"><span>No. HP</span><span class="cf-val">085604740012</span><button class="copy-btn" onclick="copyText('085604740012',this)">Salin</button></div>
+        <div class="copy-field"><span>Atas Nama</span><span class="cf-val">PinkyEdu</span></div>
+        <div class="copy-field"><span>Total</span><span class="cf-val">${totalStr}</span></div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px">Transfer ke nomor ${names[id]} di atas.</p>
+        <button class="btn-wa" style="margin-top:12px" onclick="openWaPayment()">💬 Konfirmasi Pembayaran via WhatsApp</button>
+      </div>
+    `;
+  } else if (id === 'mobile') {
+    detailHtml = `
+      <div class="pay-detail">
+        <h3>📲 Mobile Banking</h3>
+        <div class="copy-field"><span>Bank</span><span class="cf-val">BCA</span></div>
+        <div class="copy-field"><span>No. Rekening</span><span class="cf-val">1234567890</span><button class="copy-btn" onclick="copyText('1234567890',this)">Salin</button></div>
+        <div class="copy-field"><span>Total</span><span class="cf-val">${totalStr}</span></div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px">Transfer melalui aplikasi mobile banking.</p>
+        <button class="btn-wa" style="margin-top:12px" onclick="openWaPayment()">💬 Konfirmasi Pembayaran via WhatsApp</button>
+      </div>
+    `;
+  } else if (id === 'other') {
+    detailHtml = `
+      <div class="pay-detail">
+        <h3>💳 Metode Lainnya</h3>
+        <div class="copy-field"><span>WhatsApp Admin</span><span class="cf-val">${WA_DISPLAY}</span><button class="copy-btn" onclick="copyText('${WA_DISPLAY}',this)">Salin</button></div>
+        <div class="copy-field"><span>Total</span><span class="cf-val">${totalStr}</span></div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px">Hubungi Admin untuk metode pembayaran lainnya.</p>
+        <button class="btn-wa" style="margin-top:12px" onclick="openWaPayment()">💬 Konfirmasi Pembayaran via WhatsApp</button>
+      </div>
+    `;
+  } else {
+    detailHtml = '';
+  }
+  // Remove existing detail
+  const old = document.querySelector('.pay-detail');
+  if (old) old.remove();
+  if (detailHtml) {
+    const grid = document.getElementById('payGrid');
+    if (grid) grid.insertAdjacentHTML('afterend', detailHtml);
+  }
+}
+
+function markPaid() {
+  showToast('✅ Pembayaran ditandai sudah dibayar');
+  const detail = document.querySelector('.pay-detail');
+  if (detail) {
+    const btn = detail.querySelector('.btn-primary');
+    if (btn) btn.remove();
+    detail.insertAdjacentHTML('beforeend', `<button class="btn-wa" style="margin-top:12px" onclick="openWaPayment()">💬 Konfirmasi Pembayaran via WhatsApp</button>`);
+  }
+}
+
+/* ============================================================
+   FILE UPLOAD
+   ============================================================ */
+function handleFileSelect(e) {
+  const files = Array.from(e.target.files);
+  files.forEach(f => {
+    if (uploadedFiles.find(x => x.name === f.name && x.size === f.size)) return;
+    uploadedFiles.push({ name: f.name, size: f.size, type: f.type || f.name.split('.').pop().toUpperCase() });
+  });
+  renderFileList();
+  e.target.value = '';
+}
+
+function renderFileList() {
+  const el = document.getElementById('fileList');
+  if (!el) return;
+  if (uploadedFiles.length === 0) {
+    el.innerHTML = '';
+    return;
+  }
+  el.innerHTML = uploadedFiles.map((f, i) => `
+    <div class="file-item">
+      <span class="f-icon">📄</span>
+      <div class="f-info">
+        <div class="f-name">${f.name}</div>
+        <div class="f-meta">${f.type} • ${formatSize(f.size)}</div>
+      </div>
+      <button onclick="removeFile(${i})">✕</button>
+    </div>
+  `).join('');
+}
+
+function removeFile(i) {
+  uploadedFiles.splice(i, 1);
+  renderFileList();
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/(1024*1024)).toFixed(1) + ' MB';
+}
+
+/* ============================================================
+   PROCEED TO CONFIRM
+   ============================================================ */
+function getCartTotal() {
+  let total = 0;
+  CART.forEach(c => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    if (p) total += p.price * (c.qty / p.step);
+  });
+  return total;
+}
+
+function proceedToConfirm() {
+  const name = document.getElementById('coName')?.value.trim();
+  const email = document.getElementById('coEmail')?.value.trim();
+  const wa = document.getElementById('coWa')?.value.trim();
+  if (!name) return showToast('Nama wajib diisi');
+  if (!email) return showToast('Email wajib diisi');
+  if (!wa) return showToast('Nomor WhatsApp wajib diisi');
+  if (!selectedPayment) return showToast('Pilih metode pembayaran dulu');
+
+  const isMakalah = CART.some(c => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    return p && p.special === 'makalah';
+  });
+
+  formData = {
+    name, email, wa,
+    time: document.getElementById('coTime')?.value || '',
+    deadline: document.getElementById('coDeadline')?.value || '',
+    note: document.getElementById('coNote')?.value || '',
+    judul: document.getElementById('coJudul')?.value || '',
+    matkul: document.getElementById('coMatkul')?.value || '',
+    bab: document.getElementById('coBab')?.value || '',
+    kebutuhan: document.getElementById('coKebutuhan')?.value || '',
+    payment: selectedPayment
+  };
+
+  // Save user locally
+  USER = { name, email, wa, isAdmin: USER?.isAdmin || false };
+  saveUser();
+
+  renderConfirm();
+  goPage('confirm');
+}
+
+function renderConfirm() {
+  const el = document.getElementById('confirmContent');
+  if (!el) return;
+  const total = getCartTotal();
+  const orderId = generateOrderId();
+  window._currentOrderId = orderId;
+  window._currentTotal = total;
+
+  let productsHtml = '';
+  CART.forEach(c => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    if (!p) return;
+    const subtotal = p.price * (c.qty / p.step);
+    productsHtml += `
+      <div class="summary-row">
+        <span class="label">${p.name} × ${c.qty} ${p.unit}</span>
+        <span class="value">Rp${subtotal.toLocaleString('id-ID')}</span>
+      </div>
+    `;
+  });
+
+  const isMakalah = CART.some(c => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    return p && p.special === 'makalah';
+  });
+
+  el.innerHTML = `
+    <div class="summary-box">
+      <h3>🧾 Data Pemesan</h3>
+      <div class="summary-row"><span class="label">Nama</span><span class="value">${formData.name}</span></div>
+      <div class="summary-row"><span class="label">Email</span><span class="value">${formData.email}</span></div>
+      <div class="summary-row"><span class="label">WhatsApp</span><span class="value">${formData.wa}</span></div>
+    </div>
+
+    <div class="summary-box">
+      <h3>🛍️ Detail Pesanan</h3>
+      ${productsHtml}
+      <div class="summary-row total"><span class="label">Total</span><span class="value">Rp${total.toLocaleString('id-ID')}</span></div>
+    </div>
+
+    ${isMakalah ? `
+    <div class="summary-box">
+      <h3>📝 Detail Layanan</h3>
+      <div class="summary-row"><span class="label">Judul/Topik</span><span class="value">${formData.judul || '-'}</span></div>
+      <div class="summary-row"><span class="label">Mata Kuliah</span><span class="value">${formData.matkul || '-'}</span></div>
+      <div class="summary-row"><span class="label">Bab</span><span class="value">${formData.bab || '-'}</span></div>
+      <div class="summary-row"><span class="label">Kebutuhan</span><span class="value">${formData.kebutuhan || '-'}</span></div>
+    </div>
+    ` : ''}
+
+    <div class="summary-box">
+      <h3>⏰ Waktu</h3>
+      <div class="summary-row"><span class="label">Waktu Pemesanan</span><span class="value">${formData.time ? formatDateTime(formData.time) : '-'}</span></div>
+      <div class="summary-row"><span class="label">Deadline</span><span class="value">${formData.deadline ? formatDateTime(formData.deadline) : '-'}</span></div>
+      <div class="summary-row"><span class="label">Catatan</span><span class="value">${formData.note || '-'}</span></div>
+    </div>
+
+    ${uploadedFiles.length > 0 ? `
+    <div class="summary-box">
+      <h3>📎 File</h3>
+      ${uploadedFiles.map(f => `<div class="summary-row"><span class="label">${f.name}</span><span class="value">${f.type} • ${formatSize(f.size)}</span></div>`).join('')}
+    </div>
+    ` : ''}
+
+    <div class="summary-box">
+      <h3>💳 Pembayaran</h3>
+      <div class="summary-row"><span class="label">Metode</span><span class="value">${getPayLabel(formData.payment)}</span></div>
+    </div>
+
+    <label class="checkbox-item">
+      <input type="checkbox" id="confirmCheck">
+      <span>Saya sudah memeriksa kembali seluruh informasi pesanan dan memastikan data yang saya masukkan sudah benar.</span>
+    </label>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+      <button class="btn-secondary" style="width:100%" onclick="goPage('checkout')">← Kembali dan Edit</button>
+      <button class="btn-wa" id="waOrderBtn" onclick="sendOrderToWa()">💬 Pesan melalui WhatsApp Admin</button>
+    </div>
+  `;
+}
+
+function getPayLabel(id) {
+  const labels = { bank:'Bank Transfer', va:'Virtual Account', qris:'QRIS', gopay:'GoPay', ovo:'OVO', dana:'DANA', shopeepay:'ShopeePay', linkaja:'LinkAja', mobile:'Mobile Banking', other:'Metode Lainnya' };
+  return labels[id] || id;
+}
+
+function generateOrderId() {
+  const d = new Date();
+  const date = d.getFullYear().toString() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+  const count = ORDERS.filter(o => o.date && o.date.startsWith(date)).length + 1;
+  return `PEDU-${date}-${String(count).padStart(3,'0')}`;
+}
+
+function formatDateTime(str) {
+  if (!str) return '-';
+  try {
+    const d = new Date(str);
+    return d.toLocaleString('id-ID', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  } catch(e) { return str; }
+}
+
+/* ============================================================
+   SEND TO WHATSAPP
+   ============================================================ */
+function sendOrderToWa() {
+  const check = document.getElementById('confirmCheck');
+  if (!check || !check.checked) {
+    showToast('Centang konfirmasi terlebih dahulu');
+    return;
+  }
+  const orderId = window._currentOrderId;
+  const total = window._currentTotal;
+  let msg = `Halo Kak PinkyEdu 👋🏻🎀\n\nSaya ingin melakukan pemesanan.\n\n`;
+  msg += `Nomor Pesanan: ${orderId}\n`;
+  msg += `Nama: ${formData.name}\n`;
+  msg += `Email: ${formData.email}\n`;
+  msg += `WhatsApp: ${formData.wa}\n\n`;
+  msg += `Detail Pesanan:\n`;
+  CART.forEach((c, i) => {
+    const p = PRODUCTS.find(x => x.id === c.productId);
+    if (!p) return;
+    const subtotal = p.price * (c.qty / p.step);
+    msg += `${i+1}. ${p.name}\n`;
+    msg += `   Jumlah: ${c.qty} ${p.unit}\n`;
+    msg += `   Harga: Rp${p.price.toLocaleString('id-ID')}\n`;
+    msg += `   Subtotal: Rp${subtotal.toLocaleString('id-ID')}\n`;
+  });
+  msg += `\nTotal: Rp${total.toLocaleString('id-ID')}\n`;
+  msg += `Metode Pembayaran: ${getPayLabel(formData.payment)}\n`;
+  msg += `Waktu Pemesanan: ${formData.time ? formatDateTime(formData.time) : '-'}\n`;
+  if (formData.deadline) msg += `Deadline: ${formatDateTime(formData.deadline)}\n`;
+  if (formData.note) msg += `Catatan: ${formData.note}\n`;
+  if (formData.judul) msg += `Judul/Topik: ${formData.judul}\n`;
+  if (formData.matkul) msg += `Mata Kuliah: ${formData.matkul}\n`;
+  if (formData.bab) msg += `Bab: ${formData.bab}\n`;
+  if (formData.kebutuhan) msg += `Kebutuhan: ${formData.kebutuhan}\n`;
+  if (uploadedFiles.length > 0) {
+    msg += `\nFile:\n`;
+    uploadedFiles.forEach(f => { msg += `- ${f.name} (${f.type}, ${formatSize(f.size)})\n`; });
+    msg += `\nFile akan saya kirimkan melalui lampiran WhatsApp.\n`;
+  }
+  msg += `\nSaya sudah memeriksa kembali data pesanan saya.\n\nTerima kasih, Kak ♡`;
+
+  // Save order locally
+  const order = {
+    id: orderId,
+    date: new Date().toISOString(),
+    items: CART.map(c => {
+      const p = PRODUCTS.find(x => x.id === c.productId);
+      return { name: p?.name, qty: c.qty, unit: p?.unit, price: p?.price };
+    }),
+    total: total,
+    payment: getPayLabel(formData.payment),
+    status: 'Menunggu Pembayaran',
+    buyer: formData.name,
+    wa: formData.wa
+  };
+  ORDERS.unshift(order);
+  saveOrders();
+
+  // Open WhatsApp
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+  showToast('💬 WhatsApp Admin dibuka!');
+}
+
+function openWaPayment() {
+  const orderId = window._currentOrderId || 'PEDU-XXXX';
+  const total = window._currentTotal || getCartTotal();
+  let msg = `Halo Kak PinkyEdu 👋🏻🎀\n\nSaya ingin mengonfirmasi pembayaran pesanan saya.\n\n`;
+  msg += `Nomor Pesanan: ${orderId}\n`;
+  msg += `Nama: ${formData.name || USER?.name || '-'}\n`;
+  msg += `Total: Rp${total.toLocaleString('id-ID')}\n`;
+  msg += `Metode Pembayaran: ${getPayLabel(formData.payment || selectedPayment)}\n\n`;
+  msg += `Saya akan mengirimkan bukti pembayaran melalui WhatsApp.\n\nTerima kasih, Kak ♡`;
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+  showToast('Silakan lampirkan bukti pembayaran di WhatsApp');
+}
+
+function openWaGeneral() {
+  const msg = `Halo Kak PinkyEdu 👋🏻🎀\n\nSaya ingin bertanya mengenai layanan yang tersedia. Bisa dibantu informasinya, Kak? Terima kasih ♡`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function openWaMakalah() {
+  const msg = `Halo Kak PinkyEdu 👋🏻🎀\n\nSaya ingin berkonsultasi mengenai layanan Pembuatan Makalah Bab 1–5. Bisa dibantu, Kak? Terima kasih ♡`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function contactAdminOrder(orderId, name) {
+  const msg = `Halo Kak PinkyEdu 👋🏻🎀\n\nSaya ingin menanyakan pesanan saya.\n\nNomor Pesanan: ${orderId}\nNama: ${name}\n\nMohon bantuannya, Kak. Terima kasih ♡`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+/* ============================================================
+   ORDERS
+   ============================================================ */
+function renderOrders() {
+  const el = document.getElementById('ordersContent');
+  if (!el) return;
+  if (ORDERS.length === 0) {
+    el.innerHTML = `
+      <div class="empty-state">
+        <span class="emoji">📦</span>
+        <p>Belum ada pesanan.</p>
+        <button class="btn-primary" onclick="goPage('shop')">Mulai Belanja</button>
+      </div>
+    `;
+    return;
+  }
+  el.innerHTML = ORDERS.map(o => `
+    <div class="order-card">
+      <div class="order-head">
+        <div>
+          <div class="order-id">${o.id}</div>
+          <div class="order-date">${new Date(o.date).toLocaleString('id-ID', {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
+        </div>
+        <span class="order-status ${o.status === 'Selesai' ? 'selesai' : ''}">${o.status}</span>
+      </div>
+      <div class="order-body">
+        <strong>Produk:</strong> ${o.items.map(i => `${i.name} (${i.qty} ${i.unit})`).join(', ')}<br>
+        <strong>Total:</strong> Rp${o.total.toLocaleString('id-ID')}<br>
+        <strong>Pembayaran:</strong> ${o.payment}
+      </div>
+      <button class="btn-wa" style="font-size:13px;padding:10px" onclick="contactAdminOrder('${o.id}','${o.buyer}')">💬 Hubungi Admin via WhatsApp</button>
+    </div>
+  `).join('');
+}
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+function renderProfile() {
+  const el = document.getElementById('profileContent');
+  if (!el) return;
+  if (!USER) {
+    el.innerHTML = `
+      <div class="profile-card">
+        <div class="avatar">👤</div>
+        <div class="profile-name">Belum Login</div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:6px">Silakan login atau daftar untuk memesan.</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn-primary" style="flex:1" onclick="showLogin()">Login</button>
+        <button class="btn-secondary" style="flex:1" onclick="showRegister()">Daftar</button>
+      </div>
+      <div class="summary-box" style="margin-top:16px">
+        <h3>📦 Riwayat Pesanan Lokal</h3>
+        ${ORDERS.length === 0 ? '<p style="font-size:13px;color:var(--text-light)">Belum ada pesanan.</p>' : ORDERS.map(o => `<div class="summary-row"><span class="label">${o.id}</span><span class="value">${o.status}</span></div>`).join('')}
+      </div>
+    `;
+    return;
+  }
+  const active = ORDERS.filter(o => o.status !== 'Selesai');
+  const done = ORDERS.filter(o => o.status === 'Selesai');
+  el.innerHTML = `
+    <div class="profile-card">
+      <div class="avatar">${USER.name.charAt(0).toUpperCase()}</div>
+      <div class="profile-name">${USER.name}</div>
+      <div class="profile-email">${USER.email}</div>
+      <div class="profile-email">${USER.wa}</div>
+      ${USER.isAdmin ? '<div style="margin-top:8px"><span class="admin-toggle active">🔧 Admin</span></div>' : ''}
+    </div>
+    <div class="summary-box">
+      <h3>📦 Pesanan Aktif</h3>
+      ${active.length === 0 ? '<p style="font-size:13px;color:var(--text-light)">Tidak ada pesanan aktif.</p>' : active.map(o => `<div class="summary-row"><span class="label">${o.id}</span><span class="value">${o.status}</span></div>`).join('')}
+    </div>
+    <div class="summary-box">
+      <h3>✅ Pesanan Selesai</h3>
+      ${done.length === 0 ? '<p style="font-size:13px;color:var(--text-light)">Belum ada pesanan selesai.</p>' : done.map(o => `<div class="summary-row"><span class="label">${o.id}</span><span class="value">Selesai</span></div>`).join('')}
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+      <button class="btn-secondary" style="width:100%" onclick="openWaGeneral()">💬 Chat WhatsApp Admin</button>
+      <a href="${IG_URL}" target="_blank" class="btn-secondary" style="width:100%;text-align:center">📷 Instagram PinkyEdu</a>
+      <a href="${TT_URL}" target="_blank" class="btn-secondary" style="width:100%;text-align:center">🎵 TikTok PinkyEdu</a>
+      <button class="btn-danger" style="width:100%" onclick="logoutUser()">Logout</button>
+    </div>
+  `;
+}
+
+function showLogin() {
+  openModal(`
+    <h3>Login</h3>
+    <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="loginEmail" type="email" placeholder="email@example.com"></div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="loginPass" type="password" placeholder="••••••••"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Batal</button>
+      <button class="btn-primary" onclick="doLogin()">Login</button>
+    </div>
+  `);
+}
+
+function doLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  if (!email || !pass) return showToast('Isi email dan password');
+  // Simple local login
+  USER = { name: email.split('@')[0], email, wa: '', isAdmin: false };
+  saveUser();
+  closeModal();
+  renderProfile();
+  updateAdminVisibility();
+  showToast('💗 Login berhasil');
+}
+
+function showRegister() {
+  openModal(`
+    <h3>Daftar</h3>
+    <div class="form-group"><label class="form-label">Nama</label><input class="form-input" id="regName" placeholder="Nama lengkap"></div>
+    <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="regEmail" type="email" placeholder="email@example.com"></div>
+    <div class="form-group"><label class="form-label">Nomor WhatsApp</label><input class="form-input" id="regWa" placeholder="08xxxxxxxxxx"></div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="regPass" type="password" placeholder="••••••••"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Batal</button>
+      <button class="btn-primary" onclick="doRegister()">Daftar</button>
+    </div>
+  `);
+}
+
+function doRegister() {
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const wa = document.getElementById('regWa').value.trim();
+  const pass = document.getElementById('regPass').value.trim();
+  if (!name || !email || !wa || !pass) return showToast('Lengkapi semua data');
+  USER = { name, email, wa, isAdmin: false };
+  saveUser();
+  closeModal();
+  renderProfile();
+  updateAdminVisibility();
+  showToast('🎀 Pendaftaran berhasil!');
+}
+
+function logoutUser() {
+  confirmAction('Yakin ingin logout?', () => {
+    USER = null;
+    IS_ADMIN = false;
+    saveUser();
+    renderProfile();
+    updateAdminVisibility();
+    showToast('Logout berhasil');
+  });
+}
+
+/* ============================================================
+   ADMIN MODE
+   ============================================================ */
+function toggleAdmin() {
+  if (!USER) {
+    // Quick admin access for demo: prompt password
+    const pass = prompt('Masukkan password Admin:');
+    if (pass === 'pinkyadmin') {
+      USER = { name: 'Admin PinkyEdu', email: 'admin@pinkyedu.id', wa: WA_DISPLAY, isAdmin: true };
+      saveUser();
+      IS_ADMIN = true;
+      updateAdminVisibility();
+      showToast('🔧 Mode Admin aktif');
+      goPage('shop');
+    } else if (pass !== null) {
+      showToast('Password salah');
+    }
+    return;
+  }
+  if (!USER.isAdmin) { showToast('Kamu bukan Admin'); return; }
+  IS_ADMIN = !IS_ADMIN;
+  USER.isAdmin = IS_ADMIN;
+  saveUser();
+  updateAdminVisibility();
+  showToast(IS_ADMIN ? '🔧 Mode Admin aktif' : 'Mode Buyer aktif');
+}
+
+function updateAdminVisibility() {
+  const panel = document.getElementById('adminPanel');
+  const toggle = document.getElementById('adminToggle');
+  const toggleShop = document.getElementById('adminToggleShop');
+  const isAdmin = USER && USER.isAdmin;
+  if (toggle) toggle.classList.toggle('active', isAdmin);
+  if (toggle) toggle.textContent = isAdmin ? '🔧 Admin' : '🔧';
+  if (toggleShop) toggleShop.style.display = isAdmin ? 'inline-flex' : 'none';
+  if (panel) {
+    panel.style.display = isAdmin ? 'block' : 'none';
+    if (isAdmin) renderAdminPanel();
+  }
+}
+
+function renderAdminPanel() {
+  const el = document.getElementById('adminPanel');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="summary-box" style="background:#E3F2FB;border-color:#C8E6F5">
+      <h3>🔧 Panel Admin — Kelola Produk & Stok</h3>
+      <button class="btn-primary" style="width:100%;margin-bottom:12px" onclick="showAddProduct()">+ Tambah Produk</button>
+      ${PRODUCTS.map(p => `
+        <div class="cart-item" style="align-items:flex-start">
+          <img src="${p.img}" style="width:50px;height:50px">
+          <div class="cart-info">
+            <div class="cart-name">${p.name}</div>
+            <div class="cart-price">Rp${p.price.toLocaleString('id-ID')} / ${p.unit}</div>
+            <div class="cart-price" style="color:var(--text-light)">Stok: ${p.stock}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <button class="btn-mini detail" style="font-size:11px" onclick="editProduct('${p.id}')">Edit</button>
+            <button class="btn-mini add" style="font-size:11px;background:#7ED9A0" onclick="addStock('${p.id}')">+Stok</button>
+            <button class="btn-mini add" style="font-size:11px;background:#FFC069" onclick="reduceStock('${p.id}')">−Stok</button>
+            <button class="btn-mini add" style="font-size:11px;background:#FF8B8B" onclick="deleteProduct('${p.id}')">Hapus</button>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function showAddProduct() {
+  openModal(`
+    <h3>Tambah Produk</h3>
+    <div class="form-group"><label class="form-label">Nama</label><input class="form-input" id="apName"></div>
+    <div class="form-group"><label class="form-label">Harga</label><input class="form-input" id="apPrice" type="number"></div>
+    <div class="form-group"><label class="form-label">Satuan</label><input class="form-input" id="apUnit" placeholder="contoh: 10 lembar, alat"></div>
+    <div class="form-group"><label class="form-label">Step</label><input class="form-input" id="apStep" type="number" value="1"></div>
+    <div class="form-group"><label class="form-label">Deskripsi</label><textarea class="form-textarea" id="apDesc"></textarea></div>
+    <div class="form-group"><label class="form-label">Stok</label><input class="form-input" id="apStock" type="number" value="10"></div>
+    <div class="form-group"><label class="form-label">URL Gambar</label><input class="form-input" id="apImg" placeholder="https://..."></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Batal</button>
+      <button class="btn-primary" onclick="saveNewProduct()">Simpan</button>
+    </div>
+  `);
+}
+
+function saveNewProduct() {
+  const name = document.getElementById('apName').value.trim();
+  const price = parseInt(document.getElementById('apPrice').value) || 0;
+  const unit = document.getElementById('apUnit').value.trim() || 'pcs';
+  const step = parseInt(document.getElementById('apStep').value) || 1;
+  const desc = document.getElementById('apDesc').value.trim();
+  const stock = parseInt(document.getElementById('apStock').value) || 0;
+  let img = document.getElementById('apImg').value.trim();
+  if (!name) return showToast('Nama wajib diisi');
+  if (!img) img = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFE1EF"/><text x="100" y="105" text-anchor="middle" font-size="50">📦</text></svg>`);
+  const id = 'custom-' + Date.now();
+  PRODUCTS.push({ id, name, price, unit, step, desc, img, stock, category: 'produk' });
+  saveProducts();
+  closeModal();
+  renderShopProducts();
+  renderHomeProducts();
+  renderAdminPanel();
+  showToast('✅ Produk ditambahkan');
+}
+
+function editProduct(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  openModal(`
+    <h3>Edit Produk</h3>
+    <div class="form-group"><label class="form-label">Nama</label><input class="form-input" id="epName" value="${p.name}"></div>
+    <div class="form-group"><label class="form-label">Harga</label><input class="form-input" id="epPrice" type="number" value="${p.price}"></div>
+    <div class="form-group"><label class="form-label">Satuan</label><input class="form-input" id="epUnit" value="${p.unit}"></div>
+    <div class="form-group"><label class="form-label">Step</label><input class="form-input" id="epStep" type="number" value="${p.step}"></div>
+    <div class="form-group"><label class="form-label">Deskripsi</label><textarea class="form-textarea" id="epDesc">${p.desc}</textarea></div>
+    <div class="form-group"><label class="form-label">Stok</label><input class="form-input" id="epStock" type="number" value="${p.stock}"></div>
+    <div class="form-group"><label class="form-label">URL Gambar</label><input class="form-input" id="epImg" value="${p.img.substring(0,80)}..."></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Batal</button>
+      <button class="btn-primary" onclick="saveEditProduct('${id}')">Simpan</button>
+    </div>
+  `);
+}
+
+function saveEditProduct(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  p.name = document.getElementById('epName').value.trim() || p.name;
+  p.price = parseInt(document.getElementById('epPrice').value) || p.price;
+  p.unit = document.getElementById('epUnit').value.trim() || p.unit;
+  p.step = parseInt(document.getElementById('epStep').value) || p.step;
+  p.desc = document.getElementById('epDesc').value.trim() || p.desc;
+  p.stock = parseInt(document.getElementById('epStock').value) || p.stock;
+  saveProducts();
+  closeModal();
+  renderShopProducts();
+  renderHomeProducts();
+  renderAdminPanel();
+  showToast('✅ Produk diperbarui');
+}
+
+function deleteProduct(id) {
+  confirmAction('Hapus produk ini?', () => {
+    PRODUCTS = PRODUCTS.filter(x => x.id !== id);
+    saveProducts();
+    renderShopProducts();
+    renderHomeProducts();
+    renderAdminPanel();
+    showToast('Produk dihapus');
+  });
+}
+
+function addStock(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  const n = prompt('Tambah stok sebanyak:', '10');
+  if (n === null) return;
+  const num = parseInt(n);
+  if (!num || num <= 0) return showToast('Jumlah tidak valid');
+  p.stock += num;
+  saveProducts();
+  renderShopProducts();
+  renderAdminPanel();
+  showToast(`Stok +${num}`);
+}
+
+function reduceStock(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  const n = prompt('Kurangi stok sebanyak:', '5');
+  if (n === null) return;
+  const num = parseInt(n);
+  if (!num || num <= 0) return showToast('Jumlah tidak valid');
+  p.stock = Math.max(0, p.stock - num);
+  saveProducts();
+  renderShopProducts();
+  renderAdminPanel();
+  showToast(`Stok -${num}`);
+}
+
+/* ============================================================
+   MODAL & TOAST & UTILS
+   ============================================================ */
+function openModal(html) {
+  const overlay = document.getElementById('modalOverlay');
+  const content = document.getElementById('modalContent');
+  content.innerHTML = html;
+  overlay.classList.add('active');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+function confirmAction(msg, onYes, yesLabel = 'Ya, Lanjutkan', noLabel = 'Tidak, Kembali') {
+  openModal(`
+    <h3>Konfirmasi</h3>
+    <p>${msg}</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">${noLabel}</button>
+      <button class="btn-danger" id="confirmYesBtn">${yesLabel}</button>
+    </div>
+  `);
+  document.getElementById('confirmYesBtn').onclick = () => { closeModal(); onYes(); };
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    if (btn) {
+      btn.textContent = '✓ Tersalin';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Salin'; btn.classList.remove('copied'); }, 1500);
+    }
+    showToast('📋 Disalin ke clipboard');
+  }).catch(() => showToast('Gagal menyalin'));
+}
+
+/* ============================================================
+   OVERRIDE PAGE FUNCTIONS
+   ============================================================ */
+// Override goPage for checkout to render content
+const _origGoPage = goPage;
+goPage = function(page, push = true) {
+  if (page === 'checkout') { renderCheckout(); }
+  if (page === 'confirm') { if (!formData || !formData.name) { renderCheckout(); page = 'checkout'; } else { renderConfirm(); } }
+  _origGoPage(page, push);
+};
+
+// Close modal on overlay click
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'modalOverlay') closeModal();
+});
+
+/* ============================================================
+   START
+   ============================================================ */
+init();
+</script>
+</body>
+</html>
